@@ -37,8 +37,8 @@ model DevelopArticle {
   content   String    @db.Text
   createdAt DateTime  @default(now()) @db.Timestamp()
   updatedAt DateTime? @updatedAt @db.Timestamp()
-  developId Int
-  develop   Develop   @relation(fields: [developId], references: [id])
+  developId Int?
+  develop   Develop?  @relation(fields: [developId], references: [id])
   // tags      Tag[]
 
   @@map("develop_articles")

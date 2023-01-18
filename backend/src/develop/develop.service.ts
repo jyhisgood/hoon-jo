@@ -12,10 +12,14 @@ export class DevelopService {
     return this.prismaService.develop.create({ data: createDevelopDto });
   }
   getAll(@Query() query): Promise<Develop[]> {
-    return this.prismaService.develop.findMany(query);
+    return this.prismaService.develop.findMany({
+      ...query,
+      include: { articles: true },
+    });
   }
   getOne(id: number): Promise<Develop> {
     return this.prismaService.develop.findUnique({
+      include: { articles: true },
       where: {
         id: +id,
       },
