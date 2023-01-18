@@ -8,12 +8,12 @@ datasource db {
 }
 
 model Project {
-  id        Int      @id @default(autoincrement())
-  title     String   @db.VarChar(100)
-  subTitle  String?  @db.VarChar(255)
-  content   String   @db.Text
-  createdAt DateTime @default(now()) @db.Timestamp()
-  updatedAt DateTime @updatedAt @db.Timestamp()
+  id        Int       @id @default(autoincrement())
+  title     String    @db.VarChar(100)
+  subTitle  String?   @db.VarChar(255)
+  content   String    @db.Text
+  createdAt DateTime  @default(now()) @db.Timestamp()
+  updatedAt DateTime? @updatedAt @db.Timestamp()
   // tags      Tag[]
 
   @@map("projects")
