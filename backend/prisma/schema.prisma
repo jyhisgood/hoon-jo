@@ -7,18 +7,61 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model users {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts posts[]
+model Project {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(100)
+  subTitle  String?  @db.VarChar(255)
+  content   String   @db.Text
+  createdAt DateTime @default(now()) @db.Timestamp()
+  updatedAt DateTime @updatedAt @db.Timestamp()
+  // tags      Tag[]
+
+  @@map("projects")
 }
 
-model posts {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean? @default(false)
-  author    users?   @relation(fields: [authorId], references: [id])
-  authorId  Int?
+model Develop {
+  id        Int              @id @default(autoincrement())
+  title     String           @db.VarChar(100)
+  subTitle  String?          @db.VarChar(255)
+  createdAt DateTime         @default(now()) @db.Timestamp()
+  updatedAt DateTime?        @db.Timestamp()
+  articles  DevelopArticle[]
+
+  @@map("develop")
+}
+
+model DevelopArticle {
+  id        Int       @id @default(autoincrement())
+  title     String    @db.VarChar(100)
+  subTitle  String?   @db.VarChar(255)
+  content   String    @db.Text
+  createdAt DateTime  @default(now()) @db.Timestamp()
+  updatedAt DateTime? @updatedAt @db.Timestamp()
+  developId Int
+  develop   Develop   @relation(fields: [developId], references: [id])
+  // tags      Tag[]
+
+  @@map("develop_articles")
+}
+
+model Post {
+  id        Int       @id @default(autoincrement())
+  title     String    @db.VarChar(100)
+  subTitle  String?   @db.VarChar(255)
+  content   String    @db.Text
+  createdAt DateTime  @default(now()) @db.Timestamp()
+  updatedAt DateTime? @updatedAt @db.Timestamp()
+  // tags      Tag[]
+
+  @@map("posts")
+}
+
+model Tag {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(20)
+  // posts          Post[]
+  // projects       Project[]
+  // DevelopArticle DevelopArticle[]
+
+  @@map("tags")
 }
