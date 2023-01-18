@@ -24,7 +24,7 @@ model Develop {
   title     String           @db.VarChar(100)
   subTitle  String?          @db.VarChar(255)
   createdAt DateTime         @default(now()) @db.Timestamp()
-  updatedAt DateTime?        @db.Timestamp()
+  updatedAt DateTime?        @updatedAt @db.Timestamp()
   articles  DevelopArticle[]
 
   @@map("develop")
