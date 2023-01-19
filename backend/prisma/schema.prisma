@@ -10,7 +10,7 @@ datasource db {
 model Project {
   id        Int       @id @default(autoincrement())
   title     String    @db.VarChar(100)
-  subTitle  String?   @db.VarChar(255)
+  subTitle  String?   @db.VarChar(500)
   content   String    @db.Text
   createdAt DateTime  @default(now()) @db.Timestamp()
   updatedAt DateTime? @updatedAt @db.Timestamp()
@@ -22,7 +22,7 @@ model Project {
 model Develop {
   id        Int              @id @default(autoincrement())
   title     String           @db.VarChar(100)
-  subTitle  String?          @db.VarChar(255)
+  subTitle  String?          @db.VarChar(500)
   createdAt DateTime         @default(now()) @db.Timestamp()
   updatedAt DateTime?        @updatedAt @db.Timestamp()
   articles  DevelopArticle[]
@@ -33,7 +33,7 @@ model Develop {
 model DevelopArticle {
   id        Int       @id @default(autoincrement())
   title     String    @db.VarChar(100)
-  subTitle  String?   @db.VarChar(255)
+  subTitle  String?   @db.VarChar(500)
   content   String    @db.Text
   createdAt DateTime  @default(now()) @db.Timestamp()
   updatedAt DateTime? @updatedAt @db.Timestamp()
@@ -47,7 +47,7 @@ model DevelopArticle {
 model Post {
   id        Int       @id @default(autoincrement())
   title     String    @db.VarChar(100)
-  subTitle  String?   @db.VarChar(255)
+  subTitle  String?   @db.VarChar(500)
   content   String    @db.Text
   createdAt DateTime  @default(now()) @db.Timestamp()
   updatedAt DateTime? @updatedAt @db.Timestamp()
