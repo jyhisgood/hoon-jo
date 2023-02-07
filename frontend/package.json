@@ -9,7 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.24.4",
+    "@tanstack/react-query-devtools": "^4.24.4",
+    "@types/js-cookie": "^3.0.2",
+    "@types/qs": "^6.9.7",
+    "axios": "^1.2.4",
+    "defu": "^6.1.2",
+    "js-cookie": "^3.0.1",
     "next": "13.1.4",
+    "qs": "^6.11.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
