@@ -39,7 +39,7 @@ export default function useProjects(options?: ProjectQuery) {
     }
   );
   return {
-    projects,
+    projects: projects || [],
     createProject,
     patchProject,
     deleteProject,
