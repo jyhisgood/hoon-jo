@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { DevelopArticleModule } from './develop-article/develop-article.module';
 import { DevelopModule } from './develop/develop.module';
 import { PostModule } from './post/post.module';
@@ -7,6 +8,12 @@ import { ProjectModule } from './project/project.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath:
+        process.env.NODE_ENV == 'production'
+          ? '.env.production'
+          : '.env.development',
+    }),
     PrismaModule,
     ProjectModule,
     PostModule,
