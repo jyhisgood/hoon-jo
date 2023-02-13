@@ -13,12 +13,6 @@ import Cookies from 'js-cookie';
 import type { CookieAttributes } from 'js-cookie';
 
 import { QueryClient } from '@tanstack/react-query';
-import {
-  CreateProjectType,
-  ProjectQuery,
-  ProjectType,
-  UpdateProjectType,
-} from 'queries/project/types';
 
 interface StoreConfig {
   key: string;
@@ -166,26 +160,6 @@ class Client {
   async delete<T = any>(url: string, data?: any, options?: AxiosRequestConfig) {
     const res = await this.request<T>('delete', url, data, options);
     return res.data;
-  }
-
-  // Projects
-  getProjects(options?: ProjectQuery): Promise<ProjectType[]> {
-    return this.get<ProjectType[]>('/project', {
-      params: options,
-    });
-  }
-  getProject(id: number, options?: AxiosRequestConfig) {
-    return this.get(`/project/${id}`, options);
-  }
-  deleteProject(id: number) {
-    return this.delete(`/project/${id}`);
-  }
-  patchProject(data: UpdateProjectType, options?: AxiosRequestConfig) {
-    const { id, ...rest } = data;
-    return this.patch(`/project/${id}`, rest, options);
-  }
-  createProject(data: CreateProjectType, options?: AxiosRequestConfig) {
-    return this.post('/project', data, options);
   }
 }
 

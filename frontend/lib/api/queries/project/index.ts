@@ -1,19 +1,21 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
 import client, { queryClient } from '~/lib/api/client';
-import { CreateProjectType, ProjectQuery, UpdateProjectType } from './types';
+import { CreateType, GetQuery, UpdateType } from './types';
+import useApi from './useApi';
 
-export const PROJECT_KEY = 'projects';
+export const PROJECT_KEY = '/project';
 
-// TODO: How to override id to get one????
-export default function useProjects(options?: ProjectQuery) {
+export default function useProjects(options?: GetQuery) {
+  const { create, remove, update, getAll } = useApi(PROJECT_KEY);
+
   const { data: projects, ...restResults } = useQuery(
     [PROJECT_KEY, options],
-    () => client.getProjects(options)
+    () => getAll(options)
   );
 
   const { mutate: createProject } = useMutation(
-    (data: CreateProjectType) => client.createProject(data),
+    (data: CreateType) => create(data),
     {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [PROJECT_KEY] });
@@ -22,7 +24,7 @@ export default function useProjects(options?: ProjectQuery) {
   );
 
   const { mutate: patchProject } = useMutation(
-    (data: UpdateProjectType) => client.patchProject(data),
+    (data: UpdateType) => update(data),
     {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [PROJECT_KEY] });
@@ -30,14 +32,11 @@ export default function useProjects(options?: ProjectQuery) {
     }
   );
 
-  const { mutate: deleteProject } = useMutation(
-    (id: number) => client.deleteProject(id),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: [PROJECT_KEY] });
-      },
-    }
-  );
+  const { mutate: deleteProject } = useMutation((id: number) => remove(id), {
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [PROJECT_KEY] });
+    },
+  });
   return {
     projects: projects || [],
     createProject,

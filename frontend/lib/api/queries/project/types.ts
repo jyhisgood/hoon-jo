@@ -8,19 +8,19 @@ export type ProjectType = {
   updatedAt?: any;
 };
 
-export type CreateProjectType = {
+export type CreateType = {
   title: string;
   subTitle?: string | null;
   content: string;
 };
 
-export type UpdateProjectType = {
+export type UpdateType = {
   id: number;
   title?: string;
   subTitle?: string;
   content?: string;
 };
 
-export type ProjectQuery = {
+export type GetQuery = {
   where?: ProjectType;
 };
