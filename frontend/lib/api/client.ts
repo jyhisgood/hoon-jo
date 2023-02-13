@@ -16,6 +16,7 @@ import { QueryClient } from '@tanstack/react-query';
 import {
   CreateProjectType,
   ProjectQuery,
+  ProjectType,
   UpdateProjectType,
 } from 'queries/project/types';
 
@@ -168,8 +169,8 @@ class Client {
   }
 
   // Projects
-  getProjects(options?: ProjectQuery) {
-    return this.get('/project', {
+  getProjects(options?: ProjectQuery): Promise<ProjectType[]> {
+    return this.get<ProjectType[]>('/project', {
       params: options,
     });
   }
