@@ -1,11 +1,10 @@
-// TODO: Define type more specific
 export type ProjectType = {
-  id?: any;
-  title?: any;
-  subTitle?: any;
-  content?: any;
-  createdAt?: any;
-  updatedAt?: any;
+  id: number;
+  title: any;
+  subTitle: any;
+  content: any;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export type CreateType = {

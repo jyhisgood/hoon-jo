@@ -1,12 +1,11 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { AxiosRequestConfig } from 'axios';
-import client, { queryClient } from '~/lib/api/client';
+import { queryClient } from '~/lib/api/client';
 import { CreateType, GetQuery, UpdateType } from './types';
 import useApi from './useApi';
 
 export const PROJECT_KEY = '/project';
 
-export default function useProjects(options?: GetQuery) {
+export default function useProject(options?: GetQuery) {
   const { create, remove, update, getAll } = useApi(PROJECT_KEY);
 
   const { data: projects, ...restResults } = useQuery(
