@@ -5,7 +5,7 @@ type Props = {
 };
 
 const Body = ({ children }: Props) => {
-  return <div className="min-h-screen px-20">{children}</div>;
+  return <div className="min-h-screen">{children}</div>;
 };
 
 export default Body;

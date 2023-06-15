@@ -16,7 +16,7 @@ const Header = (props: Props) => {
     });
   };
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+    <nav className=" w-full border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 fixed z-10">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <a href="#" className="flex items-center">
           <img
@@ -50,8 +50,11 @@ const Header = (props: Props) => {
             ></path>
           </svg>
         </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <div
+          className="hidden w-full md:block md:w-auto bg-inherit"
+          id="navbar-default"
+        >
+          <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <Link
                 href="/hoon-jo"
