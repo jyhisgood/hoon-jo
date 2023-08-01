@@ -7,6 +7,8 @@ module.exports = {
     extend: {
       fontFamily: {
         roboto: ['var(--roboto)'],
+        pacifico: ['var(--pacifico)'],
+        bodoniModa: ['var(--bodoniModa)'],
       },
     },
   },
