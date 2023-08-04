@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { BsGithub, BsDiscord, BsInstagram } from 'react-icons/bs';
 import { SiGmail } from 'react-icons/si';
@@ -11,6 +13,7 @@ const Hoonjo = (props: Props) => {
   const [isSaiedHi, setIsSaiedHi] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [hideComponents, sethideComponents] = useState<boolean>(false);
+  const router = useRouter();
 
   const menuListConfig = {
     style: { fontSize: 80, cursor: 'pointer' },
@@ -305,16 +308,25 @@ const Hoonjo = (props: Props) => {
                   </div>
                   <div className="h-[60%] flex flex-col pr-[20%] pb-[10%] font-bodoniModa italic font-bold">
                     <div className="basis-1/4 flex items-center justify-end">
-                      <motion.h1 {...menuListConfig}>About</motion.h1>
+                      <Link href={`/${router.pathname}/about`}>
+                        <motion.h1 {...menuListConfig}>About</motion.h1>
+                      </Link>
                     </div>
                     <div className="basis-1/4 flex items-center justify-end">
-                      <motion.h1 {...menuListConfig}>Projects</motion.h1>
+                      <Link href={`/${router.pathname}/projects`}>
+                        <motion.h1 {...menuListConfig}>Projects</motion.h1>
+                      </Link>
                     </div>
                     <div className="basis-1/4 flex items-center justify-end">
-                      <motion.h1 {...menuListConfig}>Skills</motion.h1>
+                      <Link href={`/${router.pathname}/skills`}>
+                        <motion.h1 {...menuListConfig}>Skills</motion.h1>
+                      </Link>
                     </div>
+
                     <div className="basis-1/4 flex items-center justify-end">
-                      <motion.h1 {...menuListConfig}>Contact</motion.h1>
+                      <Link href={`/${router.pathname}/contact`}>
+                        <motion.h1 {...menuListConfig}>Contact</motion.h1>
+                      </Link>
                     </div>
                   </div>
                 </div>
