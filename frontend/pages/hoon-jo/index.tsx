@@ -99,7 +99,7 @@ const Hoonjo = (props: Props) => {
             }}
           >
             <h1 className="text-center text-xl tracking-widest font-bold">
-              industry's standard dummy
+              industrys standard dummy
             </h1>
           </motion.div>
           {/* middle */}
@@ -229,6 +229,7 @@ const Hoonjo = (props: Props) => {
                       idx
                     ) => (
                       <div
+                        key={idx}
                         className="basis-1/4 flex justify-center items-center relative overflow-hidden"
                         style={{ background }}
                       >
