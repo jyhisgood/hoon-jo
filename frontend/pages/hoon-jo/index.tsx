@@ -222,7 +222,7 @@ const Hoonjo = (props: Props) => {
           {hideComponents && (
             <div className="relative z-10">
               <div className="h-[100vh] flex">
-                <div className="w-[50%] h-full flex text-white">
+                <div className="w-[40%] h-full flex text-white">
                   {HoonJoCards.map(
                     (
                       { siteName, id, icon, background, hoverBackground },
@@ -274,7 +274,7 @@ const Hoonjo = (props: Props) => {
                     )
                   )}
                 </div>
-                <div className="w-[50%] h-full" style={{ background: '#fff' }}>
+                <div className="w-[60%] h-full" style={{ background: '#fff' }}>
                   <div className="h-[40%]">
                     {/* <div className="h-full flex items-center">
                       <div className="w-[200px] h-[10px]">

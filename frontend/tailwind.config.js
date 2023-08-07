@@ -9,6 +9,7 @@ module.exports = {
         roboto: ['var(--roboto)'],
         pacifico: ['var(--pacifico)'],
         bodoniModa: ['var(--bodoniModa)'],
+        yanone: ['var(--yanone)'],
       },
     },
   },

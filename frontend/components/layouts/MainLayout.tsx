@@ -3,7 +3,13 @@ import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
 
-import { Roboto, Noto_Sans_KR, Pacifico, Bodoni_Moda } from 'next/font/google';
+import {
+  Roboto,
+  Noto_Sans_KR,
+  Pacifico,
+  Bodoni_Moda,
+  Yanone_Kaffeesatz,
+} from 'next/font/google';
 
 const notoSansKr = Noto_Sans_KR({
   preload: false,
@@ -14,6 +20,12 @@ const bodoniModa = Bodoni_Moda({
   preload: false,
   weight: ['400', '500', '500', '600', '700', '800', '900'],
   variable: '--bodoniModa',
+});
+
+const yanone = Yanone_Kaffeesatz({
+  preload: false,
+  weight: ['400', '500', '500', '600', '700'],
+  variable: '--yanone',
 });
 
 const pacifico = Pacifico({
@@ -42,7 +54,8 @@ const MainLayout = ({ children }: Props) => {
         notoSansKr.className,
         roboto.variable,
         pacifico.variable,
-        bodoniModa.variable
+        bodoniModa.variable,
+        yanone.variable
       )}
     >
       {/* <Header /> */}
