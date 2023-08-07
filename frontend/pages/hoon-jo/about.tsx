@@ -20,7 +20,7 @@ const About = (props: Props) => {
         <div className="w-[50%] pt-[30px]">
           <p style={{ fontSize: 25 }}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
+            industry. Lorem Ipsum has been the industrys standard dummy text
           </p>
           <p style={{ fontSize: 25 }} className="mt-[20px]">
             ever since the 1500s, when an unknown printer took a galley of type
@@ -54,7 +54,7 @@ const About = (props: Props) => {
 
                 <p className="mt-[30px]" style={{ fontSize: 25 }}>
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s Lorem Ipsum is simply
                   dummy text of the printing
                 </p>
@@ -74,7 +74,7 @@ const About = (props: Props) => {
 
                 <p className="mt-[30px]" style={{ fontSize: 25 }}>
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s Lorem Ipsum is simply
                   dummy text of the printing
                 </p>
@@ -96,7 +96,7 @@ const About = (props: Props) => {
 
                 <p className="mt-[30px]" style={{ fontSize: 25 }}>
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s Lorem Ipsum is simply
                   dummy text of the printing
                 </p>
@@ -116,7 +116,7 @@ const About = (props: Props) => {
 
                 <p className="mt-[30px]" style={{ fontSize: 25 }}>
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s Lorem Ipsum is simply
                   dummy text of the printing
                 </p>
@@ -145,8 +145,11 @@ const About = (props: Props) => {
               <div className="relative inline-flex gap-[20px]">
                 {Array(15)
                   .fill(null)
-                  .map((item) => (
-                    <div className="w-[300px] h-[300px] border-2 border-black rounded-full pic"></div>
+                  .map((_, key) => (
+                    <div
+                      key={key}
+                      className="w-[300px] h-[300px] border-2 border-black rounded-full pic"
+                    ></div>
                   ))}
               </div>
             </div>
@@ -172,13 +175,13 @@ const About = (props: Props) => {
               <div className="w-[55%]">
                 <p style={{ fontSize: 25 }}>
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s Lorem Ipsum is simply
                   dummy
                 </p>
                 <p style={{ fontSize: 25 }} className="w-[80%] mt-[30px]">
                   text of the printing and typesetting industry. Lorem Ipsum has
-                  been the industry's standard text ever since the 1500s
+                  been the industrys standard text ever since the 1500s
                 </p>
               </div>
             </div>
