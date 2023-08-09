@@ -1,8 +1,44 @@
-import React from 'react';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
-type Props = {};
+import _ from 'lodash';
 
-const About = (props: Props) => {
+type Instagram = {
+  caption: string;
+  id: string;
+  media_type: string;
+  media_url: string;
+  permalink: string;
+};
+
+const About = () => {
+  const [[instagram1, instagram2], setInstagram] = useState<any>([[], []]);
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(
+        `https://graph.instagram.com/${process.env.NEXT_PUBLIC_INSTAGRAM_USER_ID}/media?fields=id,media_type,media_url,thumbnail_url,caption&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN}`
+      );
+      const { data } = await res.json();
+      const exceptionNull = [
+        Array(10)
+          .fill(null)
+          .map((_) => ({ media_url: '/TODO:EmptyImage', caption: 'media' })),
+        Array(10)
+          .fill(null)
+          .map((_) => ({ media_url: '/TODO:EmptyImage', caption: 'media' })),
+      ];
+      setInstagram(
+        data
+          ? _.chunk(
+              _.shuffle(_.filter(data, (item) => item.media_type !== 'VIDEO')),
+              _.round(data.length / 2)
+            )
+          : exceptionNull
+      );
+    })();
+  }, []);
+
   return (
     <div className="w-full h-full overflow-hidden">
       <div className="h-[100vh] px-[300px]">
@@ -138,37 +174,51 @@ const About = (props: Props) => {
             <div
               className="h-[300px] bottom-[130px] absolute left-0 flex-wrap"
               style={{
-                transform: 'rotate(-30deg)',
+                transform: 'rotate(-23deg)',
                 width: 'calc(100% + 400px)',
               }}
             >
               <div className="relative inline-flex gap-[20px]">
-                {Array(15)
-                  .fill(null)
-                  .map((_, key) => (
-                    <div
-                      key={key}
-                      className="w-[300px] h-[300px] border-2 border-black rounded-full pic"
-                    ></div>
-                  ))}
+                {instagram1.map((item: Instagram, key: number) => (
+                  <div
+                    key={key}
+                    className="w-[300px] h-[300px] border-2 overflow-hidden border-black rounded-full flex"
+                  >
+                    <Image
+                      src={item.media_url}
+                      alt={item.caption}
+                      width={300}
+                      height={300}
+                      style={{ rotate: '23deg' }}
+                      priority={false}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
             <div
               className="h-[300px] bottom-[-200px] absolute left-0 flex-wrap"
               style={{
-                transform: 'rotate(-30deg)',
+                transform: 'rotate(-23deg)',
                 width: 'calc(100% + 400px)',
               }}
             >
               <div className="relative inline-flex gap-[20px]">
-                {Array(15)
-                  .fill(null)
-                  .map((_, key) => (
-                    <div
-                      key={key}
-                      className="w-[300px] h-[300px] border-2 border-black rounded-full"
-                    ></div>
-                  ))}
+                {instagram2.map((item: Instagram, key: number) => (
+                  <div
+                    key={key}
+                    className="w-[300px] h-[300px] border-2 overflow-hidden border-black rounded-full flex"
+                  >
+                    <Image
+                      src={item.media_url}
+                      alt={item.caption}
+                      width={300}
+                      height={300}
+                      style={{ rotate: '23deg' }}
+                      priority={false}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
             <div className="px-[300px] pb-[400px]">
