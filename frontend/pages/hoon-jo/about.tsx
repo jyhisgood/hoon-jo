@@ -11,33 +11,44 @@ type Instagram = {
   permalink: string;
 };
 
-const About = () => {
-  const [[instagram1, instagram2], setInstagram] = useState<any>([[], []]);
+export async function getStaticProps({ locale }: any) {
+  const res = await fetch(
+    `https://graph.instagram.com/${process.env.NEXT_PUBLIC_INSTAGRAM_USER_ID}/media?fields=id,media_type,media_url,thumbnail_url,caption&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN}`
+  );
+  const { data } = await res.json();
+  return {
+    props: {
+      instagram: data,
+    },
+  };
+}
+const About = ({ instagram }: any) => {
+  // const [[instagram1, instagram2], setInstagram] = useState<any>([[], []]);
 
-  useEffect(() => {
-    (async () => {
-      const res = await fetch(
-        `https://graph.instagram.com/${process.env.NEXT_PUBLIC_INSTAGRAM_USER_ID}/media?fields=id,media_type,media_url,thumbnail_url,caption&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN}`
-      );
-      const { data } = await res.json();
-      const exceptionNull = [
-        Array(10)
-          .fill(null)
-          .map((_) => ({ media_url: '/TODO:EmptyImage', caption: 'media' })),
-        Array(10)
-          .fill(null)
-          .map((_) => ({ media_url: '/TODO:EmptyImage', caption: 'media' })),
-      ];
-      setInstagram(
-        data
-          ? _.chunk(
-              _.shuffle(_.filter(data, (item) => item.media_type !== 'VIDEO')),
-              _.round(data.length / 2)
-            )
-          : exceptionNull
-      );
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await fetch(
+  //       `https://graph.instagram.com/${process.env.NEXT_PUBLIC_INSTAGRAM_USER_ID}/media?fields=id,media_type,media_url,thumbnail_url,caption&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN}`
+  //     );
+  //     const { data } = await res.json();
+  //     const exceptionNull = [
+  //       Array(10)
+  //         .fill(null)
+  //         .map((_) => ({ media_url: '/TODO:EmptyImage', caption: 'media' })),
+  //       Array(10)
+  //         .fill(null)
+  //         .map((_) => ({ media_url: '/TODO:EmptyImage', caption: 'media' })),
+  //     ];
+  //     setInstagram(
+  //       data
+  //         ? _.chunk(
+  //             _.shuffle(_.filter(data, (item) => item.media_type !== 'VIDEO')),
+  //             _.round(data.length / 2)
+  //           )
+  //         : exceptionNull
+  //     );
+  //   })();
+  // }, []);
 
   return (
     <div className="w-full h-full overflow-hidden">
@@ -171,7 +182,7 @@ const About = () => {
           </h2>
 
           <div className="w-full h-full z-0 relative overflow-hidden pt-[100px]">
-            <div
+            {/* <div
               className="h-[300px] bottom-[130px] absolute left-0 flex-wrap"
               style={{
                 transform: 'rotate(-23deg)',
@@ -220,7 +231,7 @@ const About = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
             <div className="px-[300px] pb-[400px]">
               <div className="w-[55%]">
                 <p style={{ fontSize: 25 }}>
